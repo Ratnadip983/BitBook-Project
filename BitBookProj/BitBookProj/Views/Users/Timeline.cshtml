@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Timeline";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div style="margin-top: 40px"></div>
+        <div class="col-lg-12">
+            <div class="col-lg-11 col-md-6 col-sm-8 ">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="timeline-cover">
+                            <img src="~/img/car.png" style="width: 850px; height: 330px" class="img-responsive img-thumbnail" />
+                        </div>
+                        <div class=" timeline-profile">
+                            <img src="~/img/person.png" class="img-thumbnail img-responsive" style="width: 100%; height: 100%" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="timeline-content"></div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="timeline-intro-box timeline-intro">
+                            <div class="timeline-intro-main-box">
+                                <div class="col-lg-12">
+                                    <h3 class="pull-left">
+                                        <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Intro
+                                    </h3>
+                                </div>
+
+                                <div style="margin-top: 5px;"></div>
+                                <div class="col-lg-12 pull-right">
+                                    <ul class="sidebar-nav">
+                                        <li style="border-top: 1px solid white; ">
+                                            <a href="#">
+                                                <h4>Timeline</h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" id="btn" data-toggle="collapse" data-target="#sidebar_sub_menu" aria-expanded="false">
+                                                <h4>About <span class="caret"></span></h4>
+                                            </a>
+                                            <ul class="nav collapse" id="sidebar_sub_menu" role="menu" aria-labelledby="btn">
+                                                <li style="border-top: 1px solid white">
+                                                    <a href="#"><h5>Basic Information</h5></a>
+                                                </li>
+                                                <li><a href="#"><h5>Work & Education</h5></a></li>
+                                                <li><a href="#"><h5>Photo & Albums</h5></a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><h4>Friends</h4></a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="panel panel-default" style="border: 1px solid #999999">
+                            <div class="new-post-user pull-right">
+                                <img src="~/img/user.jpg" style="width: 4%" />
+                            </div>
+                            <div class="panel-body">
+                                <textarea name="Text" rows="4" class="form-control post-area" placeholder="Post Your Status"></textarea>
+                            </div>
+                            <div class="new-post-submit hidden-sm hidden-xs">
+                                <input type="submit" value="Post" class="btn btn-default">
+                            </div>
+                            <div class="new-post-submit-small hidden-lg hidden-md">
+                                <input type="submit" value="Post" class="btn btn-default ">
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default" style="border: 1px solid #999999">
+                            <div class="new-post-user pull-left">
+                                <img src="~/Images/user.jpg" style="width: 4%" />
+                            </div>
+                            <hr />
+                            <div class=" post-design panel-body">
+                                A love poem will not always be long and flowery. Sometimes what you need to say can be very short. In fact it may be the fact that the poem is short that makes it special. Its short length may show that you put the time and effort in to make every word count. You considered carefully every word choice. Every word choice has a reason behind it. A short poem can be the ultimate act of romance when it is given the time and effort that it deserves.
+
+                            </div>
+                            <hr />
+                            <div class="hidden-sm hidden-xs">
+                                <ul class="timeline-posted-nav">
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><i class="like"> Like</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><i class="dislike"> DisLike</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><i class="comment">Comment</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="hidden-lg hidden-md">
+                                <ul class="s-posted-nav">
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span><i class="hidden-sm hidden-xs">Like</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span><i class="hidden-sm hidden-xs">DisLike</i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span><i class="hidden-sm hidden-xs">Comment</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-body">
+                                <textarea name="comment" rows="1" class="form-control post-comment" placeholder="Post Your Comment"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 hidden-xs hidden-sm pull-right" style="position: fixed; margin-top: -20px; margin-left: 70%">
+            <ul class="right-sidebar-border right-sidebar-nav">
+                <!--sidebar-brand class-->
+                <li>
+                    <a href="#">
+                        <img src="~/Images/logo.png" style="width: 10%" /><span class="chat-friend"> Md Ayoub Ali</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Images/user.jpg" style="width: 10%" /><span class="chat-friend"> Mahbub Rahman</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Images/images.png" style="width: 10%" /><span class="chat-friend"> Md Azim Uddin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Images/logo.png" style="width: 10%" /><span class="chat-friend"> Md Tofazzel Hossan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="~/Images/user.jpg" style="width: 10%" /><span class="chat-friend"> Mustafizuar Rahman</span>
+                    </a>
+                <li>
+                <li>
+                    <a href="#">
+                        <img src="~/Images/user.jpg" style="width: 10%" /><span class="chat-friend"> Emma Watson</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+
+
+

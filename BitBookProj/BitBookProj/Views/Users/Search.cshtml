@@ -1,0 +1,45 @@
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<BitBookProj.Models.User>
+
+@*@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+</head>
+<body>*@
+<div style="margin-top: 100px"></div>
+<h3>
+    Find Friend
+</h3>
+    <table class="table">
+        
+        @using (Html.BeginForm("AddFriend","Users"))
+        {
+            foreach (var item in Model)
+            {
+                
+                    <tr>
+                        <td>
+                            @Html.Hidden("friendId", item.Id)
+                            @Html.ActionLink(item.FirstName + " " + item.LastName, "NewsFeed", "Users",routeValues:new { friendId = item.Id }, htmlAttributes: null)
+                            @*@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)*@
+                        </td>
+                        <td></td>
+                        <td>
+                            <input type="submit" class="btn btn-primary" value="Add Friend">
+                        </td>
+                    </tr>
+               
+            }
+        }
+        
+    
+    </table>
+@*</body>
+</html>*@

@@ -1,0 +1,232 @@
+﻿@using BitBookProj.Models
+@model BitBookProj.Models.User
+@{
+    //Layout = null;
+
+    User loginUser = ViewBag.LoginUser;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BitBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet"/>
+    <link href="~/Content/customize.css" rel="stylesheet"/>
+</head>
+<body>
+<div style="margin-top: 100px"></div>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-3">
+
+    <div class="side-menu">
+
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Main Menu -->
+            <div class="side-menu-container">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @if (Model.ProfilePic != null)
+                        {
+                            var base64 = Convert.ToBase64String(Model.ProfilePic);
+                            var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                            <a href="#">
+                                <img src="@imgSrc" class="lgo img-rounded" style="width: 50%"/>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="#">
+                                <img src="~/img/person.png" class="lgo img-rounded" style="width: 50%"/>
+                            </a>
+                        }
+
+                    </li>
+                    <li>
+
+                        @if (loginUser.Id == Model.Id)
+                        {
+                            using (Html.BeginForm("ChangeProfilePic", "Users", FormMethod.Post, new {enctype = "multipart/form-data"}))
+                            {
+                                <div class="row">
+                                    <span class="span4">
+                                                <input type="file" name="ProfilePic" class="input-files" />
+                                            </span>
+                                    <span class="span2">
+                                                <input type="submit" name="profilePic" value="Upload" class="btn btn-upload" />
+                                            </span>
+                                </div>
+                            }
+                        }
+
+                    </li>
+                    <li>
+                        <h3>@Model.FirstName @Model.LastName</h3>
+                    </li>
+                    <li>
+                        @Html.ActionLink("Friends", "MyFriends", "Users", new {htmlAttributes = new {@class = "btn btn-default "}})
+                    </li>
+                    <!-- Dropdown-->
+                    <li class="panel panel-default" id="dropdown">
+                        <a data-toggle="collapse" href="#dropdown-lvl1">
+                            <span class="glyphicon glyphicon-user"></span> About <span class="caret"></span>
+                        </a>
+
+                        <!-- Dropdown level 1 -->
+                        <div id="dropdown-lvl1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="#">@Model.Email</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">@Model.DateOfBirth.ToShortDateString()</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">@Model.Gender</a>
+                                    </li>
+                                    @*<li>
+                                                <a href="#">Dhaka</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Bangladesh</a>
+                                            </li>*@
+
+                                    <!-- Dropdown level 2 -->
+                                    @*<li class="panel panel-default" id="dropdown">
+                                        <a data-toggle="collapse" href="#dropdown-lvl2">
+                                            <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                        </a>
+                                        <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <ul class="nav navbar-nav">
+                                                    <li>
+                                                        <a href="#">Link</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Link</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">Link</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+
+</div>
+<div class="col-lg-9">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="timeline-cover">
+
+                @if (Model.CoverPic != null)
+                {
+                    var base64 = Convert.ToBase64String(Model.CoverPic);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+
+                    <img src="@imgSrc" style="height: 300px; width: 900px;" class="img-responsive img-thumbnail"/>
+                }
+                else
+                {
+                    <img src="~/img/car.png" style="height: 300px; width: 900px;" class="img-responsive img-thumbnail"/>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-8">
+            @if (loginUser.Id == Model.Id)
+            {
+                using (Html.BeginForm("ChangeCoverPic", "Users", FormMethod.Post, new {enctype = "multipart/form-data"}))
+                {
+                    <div class="row">
+                        <span class="span4">
+                                <input type="file" name="CoverPic" class="input-files" />
+                            </span>
+                        <span class="span2">
+                                <input type="submit" name="coverPic" value="Upload" class="btn btn-upload" />
+                            </span>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    @using (Html.BeginForm("PostStatus", "Status"))
+    {
+        <div class="row col-lg-8">
+            <div class="panel panel-default" style="border: 1px solid #999999">
+                <div class="panel-body">
+                    <textarea name="Text" rows="4" class="form-control post-area" placeholder="Post Your Status"></textarea>
+                    @*@Html.Editor("Text", new {htmlAttributes = new {@class = "form-control post-area"}})*@
+                    <input type="hidden" value="@Model.Id" name="UserId">
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-offset-10">
+                        <input type="submit" value="post" name="statusButton" class="btn btn-primary">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+
+    @foreach (Status status in ViewBag.StatusList)
+    {
+        <div class="row col-lg-8">
+            <div class="panel panel-default">
+                @Model.FirstName @Model.LastName
+                <div class="panel-body">
+
+
+                    @using (Html.BeginForm("LikeStatus", "Status"))
+                    {
+                        <div>
+                            @status.Text
+                        </div>
+                        <input type="hidden" value="@Model.Id" name="UserId">
+                        <input type="hidden" value="@status.Id" name="StatusId">
+                        <input type="submit" value="Like" name="likeButton" class="btn btn-link">
+                    }
+
+                    <p>Posted On: @status.Date</p>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+</div>
+@*<div class="col-lg-1">
+
+                <div class="side-menu">
+                    <!-- Place for the right menu bar-->
+
+                </div>
+
+            </div>*@
+</div>
+</div>
+
+
+</body>
+</html>

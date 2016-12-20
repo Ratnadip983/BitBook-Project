@@ -1,0 +1,36 @@
+﻿@using BitBookProj.Models
+@model IEnumerable<BitBookProj.Models.User>
+@{
+    ViewBag.Title = "ReceivedRequests";
+}
+
+<div style="margin-top: 100px"></div>
+<h2>Friend Requests</h2>
+
+
+<table class="table">
+@using (@Html.BeginForm("Accept","Users"))
+{
+
+    if (Model != null)
+    {
+        foreach (User user in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Hidden("friendId",user.Id)
+                    @Html.ActionLink(user.FirstName + " " + user.LastName, "NewsFeed", "Users", routeValues: new { friendId = user.Id }, htmlAttributes: null)
+                    @*@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)*@
+                </td>
+                <td></td>
+                <td>
+                    <input type="submit" class="btn btn-primary" value="Accept">
+                </td>
+            </tr>
+
+        }
+    }
+
+}
+    </table>
+

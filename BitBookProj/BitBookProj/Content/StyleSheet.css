@@ -1,0 +1,66 @@
+﻿
+
+.full_img {
+    height: 100%;
+    width: 100%;
+}
+
+.transbox {
+  margin-top:10px;
+  background-color: #ffffff;
+}
+.lgo {
+    width: 10%;
+    margin-top: -3%;
+}
+.lgo1 {
+    margin-top:2%;
+}
+.space{
+    margin-top: 70px;
+}
+.reg_frm {
+    margin: 20px;
+}
+
+/*for Nav Section*/
+
+.navbar-nav li a:hover,
+.navbar-nav li a:focus {
+    outline: none;
+    outline-offset: 0;
+    text-decoration: none;
+    background: transparent
+}
+.navbar .navbar-brand {
+    padding-top: 24px
+}
+.navbar-fixed-top {
+    background-color: rgb(255, 255, 255);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -moz-box-shadow: 0 1px 6px -2px #000;
+    -webkit-box-shadow: 0 1px 6px -2px #000;
+    box-shadow: 0 1px 6px -2px #000
+}
+.navbar-fixed-top.main-nav {
+    background-color: rgb(255, 255, 255)
+}
+.navbar-nav li a {
+    text-transform: uppercase;
+    color: #000000;
+    line-height: 28px
+}
+.active a {
+    font-weight: 700
+}
+.navbar-brand {
+    height: 60px;
+    padding: 10px 15px
+}
+.menu-hide .navbar-fixed-top {
+    top: -72px
+}

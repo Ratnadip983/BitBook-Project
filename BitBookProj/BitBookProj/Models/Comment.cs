@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
+namespace BitBookProj.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+        public int StatusId { get; set; }
+        [ForeignKey("StatusId")]
+        public virtual Status Status { get; set; }
+
+        public string Text { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime DateTime;
+    }
+}

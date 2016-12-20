@@ -1,0 +1,265 @@
+﻿@model BitBookProj.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BitBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="~/Content/StyleSheet.css" rel="stylesheet"/>
+    <style>
+        .field-validation-error { color: red; }
+    </style>
+</head>
+<body class="menu-hide-page">
+<div class="container">
+<div class="row">
+<div id="navigation">
+    <div class="navbar navbar-fixed-top " role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="~/img/logo.png" class="lgo img-rounded"/>
+                </a>
+
+                @*<div class="col-lg-6 lgo1 form-group hidden-xs pull-right">
+                                    @using (Html.BeginForm("Login", "Users", FormMethod.Post, new { id = "singInForm" }))
+                                    {
+                                        <ul class="nav navbar-nav">
+                                            <li class="col-lg-4">
+                                                @Html.TextBox("Email", new { @class = "form-control input-sm", @placeholder = "Enter Valid Email" })
+                                            </li>
+                                            <li class="col-lg-4">
+                                                @Html.Password("Password", new { @class = "form-control input-sm", @placeholder = "Enter Your Password" })
+                                            </li>
+                                            <li class="col-lg-4">
+                                                <input type="submit" name="submit" value="Sing In" class="btn btn-sm btn-success" />
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space">
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-lg-6 pull-left">
+            <div class="full_img">
+                <div class="main-content text-left">
+                    <h1 class="section-title text-primary visible-lg">Welcome To Bitbook</h1>
+                    <h2 class="section-title visible-sm">Welcome To Bitbook</h2>
+                    <h3 class="section-title space visible-xs">Welcome To Bitbook</h3>
+                </div>
+                <div class="col-md-6 text-primary hidden-xs">
+
+                    <h4>* Connect with your friends.</h4>
+                    <h4>* Search Pepole. </h4>
+                    <h4>* Share news, have fun. </h4>
+                    <h4>* Connect With the World. </h4>
+
+                </div>
+
+            </div>
+            <div class="col-lg-12 hidden-sm hidden-xs">
+                <img src="~/img/car.png" width="100%" height="100%" class="img-responsive"/>
+            </div>
+        </div>
+        <div class="col-lg-5 pull-right">
+            <div class="transbox">
+                <div class="reg_frm text-success text-center">
+                    <h4>It is free and always will be.</h4>
+                </div>
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active">
+                            <a data-toggle="tab" href="#Sing_In">
+                                <h4>Sign In</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#Sing_Up">
+                                <h4>Sign Up</h4>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="Sing_In" class=" reg_frm tab-pane fade in active">
+                            <div class="reg_frm text-success text-center">
+                                <h4>Sign In With Email</h4>
+                            </div>
+                              @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+                                    {
+                                        <div class="row">
+                                            <div class="form-group col-lg-12 ">
+                                                @Html.TextBox("lEmail",null, new {htmlAttributes = new {@class = "form-control", placeholder = "Enter Valid Email" }})
+                                            </div>
+                                            @*<div class="col-lg-12 form-group">
+                                                @Html.ValidationMessageFor(B => B.Email)
+                                            </div>*@
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-lg-12 ">
+                                                @Html.Password("lPassword",null, new {htmlAttributes = new {@class = "form-control", placeholder = "Enter Your Password" }})
+                                            </div>
+                                            @*<div class="col-lg-12 form-group">
+                                                    @Html.ValidationMessageFor(B => B.Password)
+                                                </div>*@
+                                        </div>
+                                        @*<div class="row">
+                                                <div class="col-lg-12 form-group">
+                                                    @Html.CheckBoxFor(B => B.AgreeWithUs) Remamber Me.
+                                                </div>
+                                            </div>*@
+                                        <div class="row">
+                                            <div class="col-lg-6 col-lg-offset-3 form-group">
+                                                <input type="submit" name="submit" value="Sign In" class="btn btn-block btn-lg btn-success" />
+                                            </div>
+                                        </div>
+                                    }
+
+                        </div>
+
+                        <div class="reg_frm tab-pane fade" id="Sing_Up">
+                            <div class="reg_frm text-danger text-center">
+                                <h4>Not Registrater Yet !</h4>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="row">
+                                    <div class="col-lg-6 form-group">
+                                        @*@Html.LabelFor(model => model.FirstName, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.FirstName, new {htmlAttributes = new {@class = "form-control", placeholder = "First Name"}})
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new {@class = "text-danger"})
+
+                                    </div>
+
+                                    <div class="col-lg-6 form-group">
+                                        @*@Html.LabelFor(model => model.LastName, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.LastName, new {htmlAttributes = new {@class = "form-control", placeholder = "Last Name"}})
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.Email, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control", placeholder = "Enter valid email"}})
+                                        @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.Gender, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.RadioButtonFor(model => model.Gender, "Male", true) Male
+                                        @Html.RadioButtonFor(model => model.Gender, "Female") Female
+                                        @Html.ValidationMessageFor(model => model.Gender, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.DateOfBirth, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.DateOfBirth, new {htmlAttributes = new {@class = "form-control", placeholder = "Date of Birth"}})
+                                        @Html.ValidationMessageFor(model => model.DateOfBirth, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.Password, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.Password, new {htmlAttributes = new {@class = "form-control", placeholder = "Enter Password"}})
+                                        @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.ConfirmPassword, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.ConfirmPassword, new {htmlAttributes = new {@class = "form-control", placeholder = "Confirm Password"}})
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.City, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.City, new {htmlAttributes = new {@class = "form-control", placeholder = "City(Optional)"}})
+                                        @Html.ValidationMessageFor(model => model.City, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 form-group">
+                                        @*@Html.LabelFor(model => model.Country, new {@class = "control-label col-md-2"})*@
+
+                                        @Html.EditorFor(model => model.Country, new {htmlAttributes = new {@class = "form-control", placeholder = "Country(Optional)"}})
+                                        @Html.ValidationMessageFor(model => model.Country, "", new {@class = "text-danger"})
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3 form-group">
+
+                                        <input type="submit" value="Sign Up" class="btn btn-block btn-lg btn-primar"/>
+
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space"></div>
+<div class="modal-footer">
+    <div class="col-mob-12 footer-mid-height text-center">
+        <a href="#">Privacy Policy</a> -
+        <a href="#">Terms &amp; Conditions</a>
+        <div class="copyright-text">Copyright © BitBook.com. 2016 All Rights Reserved</div>
+    </div>
+</div>
+</div>
+
+</div>
+<!--Js file and js validation file here-->
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="~/Scripts/nav.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
